@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nucaliby"
+version = "0.1"
+requires-python = ">=3.12"
+# Base installation supports sequence design. Workflow-specific dependencies are
+# kept optional so inference does not install preprocessing or evaluation tools.
+dependencies = ["torch>=2.4", "numpy", "biotite>=1.0"]
+
+[project.optional-dependencies]
+vienna = ["ViennaRNA"]      # the acceptance-only mRNA folding objective
+ensemble = ["protpardelle @ git+https://github.com/ProteinDesignLab/protpardelle-1c.git@7962da091a335251fa8e5ddef5d2c937fbd9d9ae"]
+evaluation = ["pandas"]     # folding input preparation and metrics
+train = ["pandas", "pyarrow", "atomworks==1.0.2"]
+preprocessing = ["pandas", "pyarrow", "PyYAML", "atomworks==1.0.2", "hydra-core==1.3.2", "p-tqdm", "tqdm", "natsort"]
+dev = ["pytest", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["nucaliby*"]
+
+[tool.setuptools.package-data]
+"nucaliby.preprocessing" = ["config/*.yaml"]
+"nucaliby.resources" = ["training_lists/*.txt"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E741"]
+
+[tool.ruff.format]
+quote-style = "preserve"
