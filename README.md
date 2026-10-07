@@ -4,6 +4,8 @@
 
 <h1 align="center">NuCaliby <a href="https://www.biorxiv.org/content/10.64898/2026.10.05.756407v1">[📄 Paper]</a></h1>
 
+<p align="center"><strong>Accepted at NeurIPS 2026</strong></p>
+
 NuCaliby is a structure-conditioned nucleotide sequence design model. Given a protein backbone, it directly generates a coding DNA sequence whose translation is compatible with the target structure. Unlike post-hoc synonymous codon optimization, NuCaliby searches the full nucleotide sequence space and can jointly trade protein designability against nucleotide-level objectives such as host tRNA adaptation, RNA motif insertion, and mRNA thermodynamic stability. It can also operate directly in amino-acid space.
 
 This repository contains the released checkpoint and the complete inference, evaluation, preprocessing, and training workflows.
